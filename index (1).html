@@ -1,0 +1,516 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Catatan Belajar GitHub — CV Online</title>
+    <meta name="description" content="Dokumentasi pembelajaran GitHub, Git Commit, Git Push, dan pengalaman praktik bersama siswa kelas X TKJ.">
+
+    <style>
+        :root {
+            --background: #f5f6f8;
+            --surface: #ffffff;
+            --text: #20252d;
+            --muted: #747d89;
+            --border: #e5e8ed;
+            --accent: #2457d6;
+            --accent-light: #edf2ff;
+            --dark: #171c25;
+            --max-width: 1080px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(100% - 48px, var(--max-width));
+            margin: auto;
+        }
+
+        /* NAVIGATION */
+
+        header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            font-size: 19px;
+            font-weight: 800;
+            letter-spacing: -0.7px;
+        }
+
+        .brand span {
+            color: var(--accent);
+        }
+
+        .nav-label {
+            font-size: 12px;
+            color: var(--muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* HERO */
+
+        .hero {
+            padding: 90px 0 65px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 24px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        h1 {
+            max-width: 780px;
+            font-size: clamp(38px, 6vw, 68px);
+            line-height: 1.08;
+            letter-spacing: -3px;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+
+        .hero-description {
+            max-width: 650px;
+            font-size: 17px;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 35px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .meta strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* MAIN CONTENT */
+
+        main {
+            padding: 65px 0 90px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 70px;
+            align-items: start;
+        }
+
+        .section-label {
+            font-size: 11px;
+            color: var(--accent);
+            font-weight: 800;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-size: 27px;
+            line-height: 1.3;
+            letter-spacing: -0.8px;
+            margin-bottom: 20px;
+        }
+
+        .article-intro {
+            font-size: 16px;
+            color: #555e6b;
+            margin-bottom: 35px;
+        }
+
+        /* INCIDENTS */
+
+        .incident {
+            padding: 27px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .incident-heading {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 13px;
+        }
+
+        .number {
+            flex-shrink: 0;
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            background: var(--accent-light);
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 800;
+            border-radius: 6px;
+        }
+
+        h3 {
+            font-size: 17px;
+            line-height: 1.5;
+            padding-top: 3px;
+        }
+
+        .incident p {
+            padding-left: 50px;
+            color: #626b77;
+            font-size: 15px;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            position: sticky;
+            top: 30px;
+        }
+
+        .sidebar-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 18px;
+        }
+
+        .sidebar-title {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 17px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #fff4e5;
+            color: #9a5a00;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+
+        .sidebar-box p {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .topic-list {
+            list-style: none;
+        }
+
+        .topic-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+            color: #505966;
+        }
+
+        .topic-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* LESSON */
+
+        .lesson {
+            background: var(--dark);
+            color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 35px;
+        }
+
+        .lesson .section-label {
+            color: #8baaff;
+        }
+
+        .lesson h2 {
+            font-size: 21px;
+            margin-bottom: 12px;
+        }
+
+        .lesson p {
+            color: #b5bdca;
+            font-size: 14px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 28px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .footer-content strong {
+            color: var(--text);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 760px) {
+            .container {
+                width: min(100% - 36px, var(--max-width));
+            }
+
+            .hero {
+                padding: 65px 0 45px;
+            }
+
+            h1 {
+                letter-spacing: -1.8px;
+            }
+
+            .hero-description {
+                font-size: 15px;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            main {
+                padding: 45px 0 65px;
+            }
+
+            .incident p {
+                padding-left: 0;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container navbar">
+            <a href="#" class="brand"><span>.</span>PUTRA</a>
+            <div class="nav-label">Learning Journal / 2026</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+
+            <div class="eyebrow">Catatan Pembelajaran</div>
+
+            <h1>Belajar GitHub: Antara Commit, Push, dan Kendala di Laboratorium</h1>
+
+            <p class="hero-description">
+                Dokumentasi pengalaman praktik menggunakan GitHub dan
+                Visual Studio Code bersama tim IT kelas X TKJ.
+                Tidak semua proses berjalan sesuai rencana, tetapi
+                setiap kendala menjadi bagian dari pembelajaran.
+            </p>
+
+            <div class="meta">
+                <span><strong>Tanggal:</strong> Sabtu, 21 November 2026</span>
+                <span><strong>Kelas:</strong> X TKJ</span>
+                <span><strong>Topik:</strong> Git & GitHub</span>
+            </div>
+
+        </div>
+    </section>
+
+    <main>
+        <div class="container content-grid">
+
+            <article>
+
+                <div class="section-label">01 / Pengalaman Praktik</div>
+
+                <h2>Ketika Praktik Tidak Berjalan Sesuai Rencana</h2>
+
+                <p class="article-intro">
+                    Pada pembelajaran hari ini, saya bersama tim IT dan
+                    siswa kelas X TKJ ALL mencoba mempraktikkan penggunaan
+                    GitHub melalui Visual Studio Code. Target pembelajaran
+                    adalah memahami alur kerja dasar Git, mulai dari
+                    menyiapkan repository hingga mengirim perubahan kode
+                    menggunakan perintah commit dan push.
+                    Namun, praktik belum berhasil diselesaikan karena
+                    terdapat beberapa kendala teknis yang ditemukan
+                    selama kegiatan berlangsung.
+                </p>
+
+                <div class="incident">
+                    <div class="incident-heading">
+                        <div class="number">01</div>
+                        <h3>Aplikasi yang Terpasang Hilang Setelah Komputer Direstart</h3>
+                    </div>
+
+                    <p>
+                        Kendala pertama ditemukan pada komputer laboratorium
+                        TKJ. Setiap kali siswa menginstal aplikasi desktop,
+                        seperti Adobe Premiere Pro maupun aplikasi lainnya,
+                        proses instalasi berhasil dan aplikasi dapat digunakan
+                        secara normal. Namun, setelah komputer direstart,
+                        aplikasi yang sebelumnya telah dipasang tidak lagi
+                        tersedia. Kondisi ini menghambat persiapan lingkungan
+                        kerja yang dibutuhkan untuk praktik Git dan GitHub.
+                    </p>
+                </div>
+
+                <div class="incident">
+                    <div class="incident-heading">
+                        <div class="number">02</div>
+                        <h3>Hambatan Saat Pendaftaran Akun GitHub</h3>
+                    </div>
+
+                    <p>
+                        Kendala berikutnya terjadi ketika siswa mencoba
+                        membuat akun GitHub. Beberapa proses pendaftaran
+                        mengalami kegagalan setelah dilakukan percobaan
+                        berulang kali dari jaringan atau alamat IP yang sama.
+                        Dalam praktiknya, tombol pendaftaran sempat diklik
+                        berkali-kali dalam rentang waktu yang sangat singkat,
+                        sekitar tiga detik. Ada kemungkinan aktivitas
+                        berulang tersebut memicu pembatasan atau pemeriksaan
+                        keamanan dari GitHub. Akibatnya, proses pembuatan
+                        akun tidak dapat dilanjutkan dengan lancar.
+                    </p>
+                </div>
+
+                <div class="lesson">
+                    <div class="section-label">02 / Refleksi Pembelajaran</div>
+
+                    <h2>Kendala Teknis Juga Bagian dari Proses Belajar</h2>
+
+                    <p>
+                        Dari praktik hari ini, saya menyadari bahwa
+                        keberhasilan menggunakan GitHub tidak hanya
+                        bergantung pada pemahaman perintah Git. Kondisi
+                        komputer, kesiapan perangkat lunak, koneksi
+                        internet, dan proses autentikasi akun juga
+                        berpengaruh terhadap kelancaran pembelajaran.
+                        Praktik akan dilanjutkan dengan memperbaiki
+                        kendala yang ditemukan agar siswa dapat memahami
+                        proses commit dan push hingga berhasil mengirim
+                        kode ke repository GitHub.
+                    </p>
+                </div>
+
+            </article>
+
+            <aside class="sidebar">
+
+                <div class="sidebar-box">
+                    <div class="sidebar-title">Status Praktik</div>
+                    <div class="status">Belum Selesai</div>
+                    <p>
+                        Praktik pengiriman kode ke repository GitHub
+                        belum berhasil diselesaikan karena kendala
+                        perangkat laboratorium dan pendaftaran akun.
+                    </p>
+                </div>
+
+                <div class="sidebar-box">
+                    <div class="sidebar-title">Materi yang Dipelajari</div>
+
+                    <ul class="topic-list">
+                        <li>01. Pengenalan GitHub</li>
+                        <li>02. Membuat akun GitHub</li>
+                        <li>03. Membuat repository</li>
+                        <li>04. Integrasi Git dengan VS Code</li>
+                        <li>05. Git Commit dan Git Push</li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-box">
+                    <div class="sidebar-title">Dokumentasi</div>
+                    <p>
+                        Catatan pembelajaran dan pengalaman praktik
+                        teknologi informasi, khususnya pengembangan
+                        web dan pengelolaan kode menggunakan GitHub.
+                    </p>
+                </div>
+
+            </aside>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div><strong>CV.ONLINE</strong> — Learning & Development</div>
+            <div>© 2026. Personal Learning Journal.</div>
+        </div>
+    </footer>
+
+</body>
+</html>
